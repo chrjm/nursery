@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Nursery",
-  description: "A simple Nursery web app.",
+  description: "Plants for sale from Nursery.",
 };
 
 export default function RootLayout({
