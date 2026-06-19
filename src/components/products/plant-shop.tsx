@@ -208,14 +208,8 @@ export function PlantShop({ products }: PlantShopProps) {
             Get these plants out of my house!
           </h2>
 
-          <div className="relative mx-auto max-w-2xl">
-            <div
-              aria-hidden="true"
-              className="cloud-card-stroke absolute inset-0"
-            >
-              <div className="cloud-card h-full w-full" />
-            </div>
-            <p className="relative text-balance px-9 py-8 text-center text-ink text-lg leading-7 sm:px-12 sm:py-9 sm:text-xl">
+          <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
+            <p className="text-balance text-center text-ink text-lg leading-7 sm:text-xl">
               Chris is selling his plants, and all proceeds go to the Marsden
               Cancer Hospice, where Katie's dad is currently being treated.
             </p>
