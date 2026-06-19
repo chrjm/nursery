@@ -1,0 +1,17 @@
+{
+  "id": "mistletoe-cactus-terracotta-pot",
+  "name": "Mistletoe Cactus",
+  "plantType": "Trailing cactus",
+  "scientificName": "Rhipsalis",
+  "priceCents": 4200,
+  "description": "A trailing cactus with fine, cascading stems that softens shelves, ledges, and plant stands.",
+  "image": {
+    "src": "/plants/transparent/mistletoe-cactus-terracotta-pot.png",
+    "alt": "Trailing mistletoe cactus spilling over a terracotta pot"
+  },
+  "light": "Bright indirect light",
+  "water": "Water when mostly dry",
+  "size": "Trailing tabletop plant",
+  "pot": "Terracotta pot",
+  "inventory": 1
+}

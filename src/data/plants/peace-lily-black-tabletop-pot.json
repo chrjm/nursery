@@ -1,0 +1,17 @@
+{
+  "id": "peace-lily-black-tabletop-pot",
+  "name": "Peace Lily",
+  "plantType": "Flowering houseplant",
+  "scientificName": "Spathiphyllum",
+  "priceCents": 4600,
+  "description": "Deep green leaves and a white bloom in a compact black pot for desks, shelves, or a shaded corner.",
+  "image": {
+    "src": "/plants/transparent/peace-lily-black-tabletop-pot.png",
+    "alt": "Peace lily with glossy leaves and a white bloom in a black tabletop pot"
+  },
+  "light": "Low to medium indirect light",
+  "water": "Keep evenly moist",
+  "size": "Tabletop plant",
+  "pot": "Black pot",
+  "inventory": 1
+}

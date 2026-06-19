@@ -1,0 +1,17 @@
+{
+  "id": "upright-variegated-snake-plant-marble-pot",
+  "name": "Upright Variegated Snake Plant",
+  "plantType": "Snake plant",
+  "scientificName": "Dracaena trifasciata",
+  "priceCents": 7200,
+  "description": "A full variegated snake plant with dense yellow-edged leaves in a sculptural marble-look pot.",
+  "image": {
+    "src": "/plants/transparent/upright-variegated-snake-plant-marble-pot.png",
+    "alt": "Upright variegated snake plant with yellow-edged leaves in a marble-look pot"
+  },
+  "light": "Low to bright indirect light",
+  "water": "Let soil dry between waterings",
+  "size": "Mature floor plant",
+  "pot": "Marble-look pot",
+  "inventory": 1
+}

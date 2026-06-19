@@ -1,0 +1,17 @@
+{
+  "id": "staircase-variegated-snake-plant-white-pot",
+  "name": "Staircase Variegated Snake Plant",
+  "plantType": "Snake plant",
+  "scientificName": "Dracaena trifasciata",
+  "priceCents": 6800,
+  "description": "A mature variegated snake plant with long yellow-edged leaves and a sturdy white pot.",
+  "image": {
+    "src": "/plants/transparent/staircase-variegated-snake-plant-white-pot.png",
+    "alt": "Variegated snake plant with yellow-edged leaves in a white pot near stairs"
+  },
+  "light": "Low to bright indirect light",
+  "water": "Let soil dry between waterings",
+  "size": "Mature floor plant",
+  "pot": "White pot with saucer",
+  "inventory": 1
+}

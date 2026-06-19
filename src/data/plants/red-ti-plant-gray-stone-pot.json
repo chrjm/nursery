@@ -1,0 +1,17 @@
+{
+  "id": "red-ti-plant-gray-stone-pot",
+  "name": "Red Ti Plant",
+  "plantType": "Tropical foliage",
+  "scientificName": "Cordyline fruticosa",
+  "priceCents": 5800,
+  "description": "Slim burgundy and green leaves bring color and vertical lines to a bright indoor nook.",
+  "image": {
+    "src": "/plants/transparent/red-ti-plant-gray-stone-pot.png",
+    "alt": "Red ti plant with burgundy leaves in a gray stone pot"
+  },
+  "light": "Bright indirect light",
+  "water": "Keep lightly moist",
+  "size": "Medium floor plant",
+  "pot": "Gray stone pot",
+  "inventory": 1
+}
