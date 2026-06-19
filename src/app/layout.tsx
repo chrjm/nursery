@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Baloo_2, Jost, Mochiy_Pop_One, Nunito } from "next/font/google";
+import { Jost, Mochiy_Pop_One, Nunito } from "next/font/google";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -13,12 +13,6 @@ const jost = Jost({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-jost",
-});
-
-const baloo = Baloo_2({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-baloo",
 });
 
 const mochiy = Mochiy_Pop_One({
@@ -41,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`h-full antialiased ${nunito.variable} ${baloo.variable} ${mochiy.variable} ${jost.variable}`}
+      className={`h-full antialiased ${nunito.variable} ${mochiy.variable} ${jost.variable}`}
       lang="en"
     >
       <body className="flex min-h-full flex-col">{children}</body>

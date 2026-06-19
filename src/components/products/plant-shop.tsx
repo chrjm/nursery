@@ -150,10 +150,10 @@ function PlantCard({ product, index }: PlantCardProps) {
         <div className={cn("chip-bg relative aspect-square", pattern)}>
           <Image
             alt={product.image.alt}
-            className="die-cut object-contain p-3"
+            className="object-contain p-3"
             fill
-            loading={index < 3 ? "eager" : "lazy"}
-            quality={85}
+            loading={index === 0 ? "eager" : "lazy"}
+            priority={index === 0}
             sizes="(min-width: 1024px) 352px, (min-width: 640px) 45vw, 92vw"
             src={product.image.src}
           />
@@ -193,7 +193,7 @@ interface PlantShopProps {
 export function PlantShop({ products }: PlantShopProps) {
   return (
     <div className="min-h-svh">
-      <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/85 backdrop-blur">
+      <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
         <div className="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
           <FlowerMark className="size-6 rotate-12 text-leaf" />
           <h1 className="font-pop text-ink text-lg sm:text-xl">
