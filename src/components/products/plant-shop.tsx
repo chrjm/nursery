@@ -2,10 +2,11 @@
 
 import { Leaf } from "lucide-react";
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { flairFor, VENUE_EMOJI } from "@/data/plant-flair";
 import type { PlantProduct } from "@/data/plants";
 import type { SoldStatus } from "@/lib/sold-status";
+import { fetchSoldStatus } from "@/lib/sold-status-client";
 import { cn } from "@/lib/utils";
 
 // Vivid scrapbook-paper colors + playful tilts, cycled across the sheet.
@@ -40,16 +41,15 @@ function formatPrice(priceCents: number): string {
 
 interface PlantCardProps {
   index: number;
-  initialSold: boolean;
   product: PlantProduct;
+  sold: boolean;
 }
 
-function PlantCard({ product, index, initialSold }: PlantCardProps) {
+function PlantCard({ product, index, sold }: PlantCardProps) {
   const { nickname, venue } = flairFor(product.id);
   const halo = HALOS[index % HALOS.length];
   const tilt = TILTS[index % TILTS.length];
   const pattern = CHIP_PATTERNS[index % CHIP_PATTERNS.length];
-  const sold = initialSold;
 
   return (
     <li
@@ -132,12 +132,53 @@ interface PlantShopProps {
 }
 
 export function PlantShop({ products, soldStatus }: PlantShopProps) {
+  const [liveSoldStatus, setLiveSoldStatus] = useState(soldStatus);
+
+  useEffect(() => {
+    setLiveSoldStatus(soldStatus);
+  }, [soldStatus]);
+
+  useEffect(() => {
+    let active = true;
+
+    const refreshSoldStatus = async () => {
+      try {
+        const nextSoldStatus = await fetchSoldStatus();
+        if (active) {
+          setLiveSoldStatus(nextSoldStatus);
+        }
+      } catch {
+        // Keep the server-rendered status if the live refresh fails.
+      }
+    };
+
+    const handleFocus = () => {
+      refreshSoldStatus().catch(() => undefined);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        refreshSoldStatus().catch(() => undefined);
+      }
+    };
+
+    refreshSoldStatus().catch(() => undefined);
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      active = false;
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <div className="min-h-svh">
       <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-center gap-2 px-4 py-3 sm:px-6">
           <h1 className="font-bold font-pop text-ink text-lg uppercase sm:text-xl">
-            🌱🌿🪴 Chris's Cool Plants 🪴🌿🌱
+            🌱🌿🪴 Chris&apos;s Cool Plants 🪴🌿🌱
           </h1>
         </div>
       </header>
@@ -185,9 +226,9 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
             {products.map((product, index) => (
               <PlantCard
                 index={index}
-                initialSold={soldStatus[product.id] ?? false}
                 key={product.id}
                 product={product}
+                sold={liveSoldStatus[product.id] ?? false}
               />
             ))}
           </ul>
@@ -198,7 +239,7 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
         <div className="flex flex-col items-center gap-2 border-ink/10 border-t pt-8 text-center">
           <p className="flex items-center gap-2 font-pop font-semibold text-ink text-lg">
             <Leaf aria-hidden="true" className="size-5 text-leaf" />
-            Chris's Cool Plants
+            Chris&apos;s Cool Plants
           </p>
         </div>
       </footer>

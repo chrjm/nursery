@@ -1,38 +1,62 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { plantProducts } from "@/data/plants";
+import { useCallback, useEffect, useState } from "react";
 import { flairFor } from "@/data/plant-flair";
-import { useEffect, useState } from "react";
+import { plantProducts } from "@/data/plants";
+import type { SoldStatus } from "@/lib/sold-status";
+import { fetchSoldStatus, saveSoldStatus } from "@/lib/sold-status-client";
+import { cn } from "@/lib/utils";
 
 export default function EditPage() {
-  const [soldStatus, setSoldStatus] = useState<Record<string, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState<string | null>(null);
+  const [soldStatus, setSoldStatus] = useState<SoldStatus>({});
 
-  useEffect(() => {
-    fetch("/api/sold")
-      .then((r) => r.json())
-      .then(setSoldStatus);
+  const refreshStatus = useCallback(async () => {
+    try {
+      setSoldStatus(await fetchSoldStatus());
+      setError(null);
+    } catch {
+      setError("Could not load sold status.");
+    }
   }, []);
 
+  useEffect(() => {
+    refreshStatus().catch(() => undefined);
+  }, [refreshStatus]);
+
   const toggle = async (plantId: string) => {
-    const next = !soldStatus[plantId];
-    setSoldStatus((prev) => ({ ...prev, [plantId]: next }));
+    const next = !(soldStatus[plantId] ?? false);
+    const previousStatus = soldStatus;
+
+    setError(null);
     setSaving(plantId);
-    await fetch("/api/sold", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plantId, sold: next }),
-    });
-    setSaving(null);
+    setSoldStatus({ ...previousStatus, [plantId]: next });
+
+    try {
+      setSoldStatus(await saveSoldStatus(plantId, next));
+    } catch {
+      setSoldStatus(previousStatus);
+      setError("Could not save sold status. Please try again.");
+    } finally {
+      setSaving(null);
+    }
   };
 
   return (
     <div className="min-h-svh bg-background p-6">
-      <h1 className="font-futura font-black text-ink text-3xl uppercase mb-8 text-center">
+      <h1 className="mb-8 text-center font-black font-futura text-3xl text-ink uppercase">
         Edit sold status
       </h1>
-      <ul className="mx-auto max-w-lg flex flex-col gap-3">
+      {error && (
+        <p
+          className="mx-auto mb-4 max-w-lg rounded-lg bg-white px-4 py-3 text-center font-bold text-guava text-sm"
+          role="alert"
+        >
+          {error}
+        </p>
+      )}
+      <ul className="mx-auto flex max-w-lg flex-col gap-3">
         {plantProducts.map((product) => {
           const sold = soldStatus[product.id] ?? false;
           return (
@@ -52,9 +76,9 @@ export default function EditPage() {
                 className={cn(
                   "rounded-full px-4 py-2 font-black font-futura text-xs uppercase transition-colors",
                   sold ? "bg-sunshine text-ink" : "bg-leaf text-white",
-                  saving === product.id && "opacity-50"
+                  saving !== null && "opacity-50"
                 )}
-                disabled={saving === product.id}
+                disabled={saving !== null}
                 onClick={() => toggle(product.id)}
                 type="button"
               >
