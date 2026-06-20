@@ -7,8 +7,12 @@ const KEY = "nursery/sold-status.json";
 export async function getSoldStatus(): Promise<SoldStatus> {
   try {
     const { blobs } = await list({ prefix: KEY });
-    if (!blobs[0]) return {};
-    const res = await fetch(blobs[0].url, { cache: "no-store" });
+    if (!blobs[0]) {
+      return {};
+    }
+    const url = new URL(blobs[0].url);
+    url.searchParams.set("v", Date.now().toString());
+    const res = await fetch(url, { cache: "no-store" });
     return (await res.json()) as SoldStatus;
   } catch {
     return {};

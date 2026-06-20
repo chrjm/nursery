@@ -2,11 +2,10 @@
 
 import { Leaf } from "lucide-react";
 import Image from "next/image";
-import { type CSSProperties, useState } from "react";
-
-import type { SoldStatus } from "@/lib/sold-status";
+import type { CSSProperties } from "react";
+import { flairFor, VENUE_EMOJI } from "@/data/plant-flair";
 import type { PlantProduct } from "@/data/plants";
-import { VENUE_EMOJI, flairFor } from "@/data/plant-flair";
+import type { SoldStatus } from "@/lib/sold-status";
 import { cn } from "@/lib/utils";
 
 // Vivid scrapbook-paper colors + playful tilts, cycled across the sheet.
@@ -39,26 +38,6 @@ function formatPrice(priceCents: number): string {
   return currencyFormatter.format(priceCents / 100);
 }
 
-function FlowerMark({ className }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <g fill="currentColor">
-        <circle cx="12" cy="5" r="3.4" />
-        <circle cx="19" cy="10" r="3.4" />
-        <circle cx="16.3" cy="18" r="3.4" />
-        <circle cx="7.7" cy="18" r="3.4" />
-        <circle cx="5" cy="10" r="3.4" />
-      </g>
-      <circle cx="12" cy="12.4" fill="#ffd43b" r="3.1" />
-    </svg>
-  );
-}
-
 interface PlantCardProps {
   index: number;
   initialSold: boolean;
@@ -70,7 +49,7 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
   const halo = HALOS[index % HALOS.length];
   const tilt = TILTS[index % TILTS.length];
   const pattern = CHIP_PATTERNS[index % CHIP_PATTERNS.length];
-  const [sold] = useState(initialSold);
+  const sold = initialSold;
 
   return (
     <li
@@ -109,7 +88,12 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
         </div>
 
         <div className="flex flex-1 flex-col gap-3 px-5 pt-3 pb-5">
-          <h2 className={cn("font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight", sold && "line-through opacity-40")}>
+          <h2
+            className={cn(
+              "font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight",
+              sold && "line-through opacity-40"
+            )}
+          >
             {nickname}
           </h2>
           {sold && (
@@ -117,11 +101,11 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
               SOLD
             </p>
           )}
-          <p className="font-semibold font-futura text-2xl text-ink">
+          <p className="font-futura font-semibold text-2xl text-ink">
             {formatPrice(product.priceCents)}
           </p>
           {product.note && (
-            <p className="text-sm font-semibold text-muted-foreground">
+            <p className="font-semibold text-muted-foreground text-sm">
               {product.note}
             </p>
           )}
@@ -152,7 +136,7 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
     <div className="min-h-svh">
       <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-center gap-2 px-4 py-3 sm:px-6">
-          <h1 className="font-pop font-bold uppercase text-ink text-lg sm:text-xl">
+          <h1 className="font-bold font-pop text-ink text-lg uppercase sm:text-xl">
             🌱🌿🪴 Chris's Cool Plants 🪴🌿🌱
           </h1>
         </div>
@@ -162,7 +146,9 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
         <section className="pt-8 pb-2 sm:pt-10">
           <h2 className="comic-headline mx-auto mb-6 max-w-xl text-balance text-center font-bold font-futura text-4xl uppercase leading-[0.95] tracking-tight sm:text-5xl">
             Get these plants{" "}
-            <em className="block font-black italic text-6xl sm:text-8xl">out of my house!</em>
+            <em className="block font-black text-6xl italic sm:text-8xl">
+              out of my house!
+            </em>
           </h2>
           <div className="mx-auto max-w-2xl rounded-lg border-2 border-ink/15 bg-white px-6 py-5 shadow-md sm:px-8 sm:py-6">
             <p className="text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
@@ -180,7 +166,7 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
             return (
               <>
                 <a
-                  className="comic-headline mb-4 block text-center font-black font-futura text-2xl uppercase leading-tight text-ink underline decoration-2 underline-offset-4 sm:text-3xl"
+                  className="comic-headline mb-4 block text-center font-black font-futura text-2xl text-ink uppercase leading-tight underline decoration-2 underline-offset-4 sm:text-3xl"
                   href={href}
                   rel="noopener noreferrer"
                   target="_blank"
