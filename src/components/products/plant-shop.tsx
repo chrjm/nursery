@@ -173,9 +173,14 @@ function PlantCard({ product, index }: PlantCardProps) {
         </div>
 
         <div className="flex flex-1 flex-col gap-3 px-5 pt-3 pb-5">
-          <h2 className="font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight">
+          <h2 className={cn("font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight", sold && "line-through opacity-40")}>
             {nickname}
           </h2>
+          {sold && (
+            <p className="comic-headline -mt-1 font-black font-futura text-3xl text-guava uppercase">
+              SOLD
+            </p>
+          )}
           <p className="font-semibold font-futura text-2xl text-ink">
             {formatPrice(product.priceCents)}
           </p>
