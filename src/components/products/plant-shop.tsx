@@ -233,7 +233,7 @@ export function PlantShop({ products }: PlantShopProps) {
                   Message me on WhatsApp at {number} to buy a plant!
                 </a>
                 <div className="mb-8 flex justify-center">
-                  <span className="inline-block -rotate-2 rounded-full bg-sunshine px-6 py-3 font-black font-futura text-ink text-lg uppercase shadow-md ring-2 ring-ink/10 sm:text-xl">
+                  <span className="inline-block -rotate-2 rounded-full bg-sunshine px-4 py-2 font-black font-futura text-ink text-sm uppercase shadow-md ring-2 ring-ink/10">
                     🚚 Free delivery!
                   </span>
                 </div>
