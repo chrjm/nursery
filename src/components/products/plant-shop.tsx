@@ -160,6 +160,16 @@ function PlantCard({ product, index }: PlantCardProps) {
             sizes="(min-width: 640px) 45vw, 92vw"
             src={product.image.src}
           />
+          <button
+            className={cn(
+              "absolute top-3 left-3 rotate-[-3deg] cursor-pointer rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md transition-colors",
+              sold ? "bg-guava text-white" : "bg-sunshine text-ink"
+            )}
+            onClick={() => setSold((s) => !s)}
+            type="button"
+          >
+            {sold ? "SOLD! 🎉" : "Not sold yet! 😢"}
+          </button>
         </div>
 
         <div className="flex flex-1 flex-col gap-3 px-5 pt-3 pb-5">
@@ -175,18 +185,6 @@ function PlantCard({ product, index }: PlantCardProps) {
             </p>
           )}
           <div className="mt-auto flex flex-wrap items-center gap-2">
-            <button
-              className={cn(
-                "inline-flex w-fit cursor-pointer items-center rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase transition-colors",
-                sold
-                  ? "bg-guava text-white"
-                  : "bg-secondary text-ink"
-              )}
-              onClick={() => setSold((s) => !s)}
-              type="button"
-            >
-              {sold ? "SOLD! 🎉" : "Not sold yet! 😢"}
-            </button>
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
               {venue}
