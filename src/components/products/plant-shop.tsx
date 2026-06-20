@@ -2,7 +2,6 @@
 
 import { Leaf } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { type CSSProperties, useState } from "react";
 
 import type { SoldStatus } from "@/lib/sold-status";
@@ -145,19 +144,7 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
   const halo = HALOS[index % HALOS.length];
   const tilt = TILTS[index % TILTS.length];
   const pattern = CHIP_PATTERNS[index % CHIP_PATTERNS.length];
-  const [sold, setSold] = useState(initialSold);
-  const router = useRouter();
-
-  const toggleSold = async () => {
-    const next = !sold;
-    setSold(next);
-    await fetch("/api/sold", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plantId: product.id, sold: next }),
-    });
-    router.refresh();
-  };
+  const [sold] = useState(initialSold);
 
   return (
     <li
@@ -175,24 +162,24 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
             sizes="(min-width: 640px) 45vw, 92vw"
             src={product.image.src}
           />
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="absolute top-1 left-2 z-0 object-contain drop-shadow-md"
-            height={56}
-            src={sold ? "/happychris.webp" : "/sadchris.webp"}
-            width={56}
-          />
-          <button
-            className={cn(
-              "absolute top-9 left-3 z-10 rotate-[-3deg] cursor-pointer rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md transition-colors",
-              sold ? "bg-sunshine text-ink" : "bg-leaf text-white"
-            )}
-            onClick={toggleSold}
-            type="button"
-          >
-            {sold ? "SOLD!" : "Not sold yet!"}
-          </button>
+          <div className="absolute top-2 left-3 flex -rotate-3 flex-col items-center">
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="relative z-0 object-contain drop-shadow-md"
+              height={56}
+              src={sold ? "/happychris.webp" : "/sadchris.webp"}
+              width={56}
+            />
+            <div
+              className={cn(
+                "relative z-10 -mt-2 rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md",
+                sold ? "bg-sunshine text-ink" : "bg-leaf text-white"
+              )}
+            >
+              {sold ? "SOLD!" : "Not sold yet!"}
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-1 flex-col gap-3 px-5 pt-3 pb-5">
