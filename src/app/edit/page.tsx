@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { plantProducts } from "@/data/plants";
+import { flairFor } from "@/data/plant-flair";
 import { useEffect, useState } from "react";
 
 export default function EditPage() {
@@ -45,7 +46,7 @@ export default function EditPage() {
                   sold && "line-through opacity-40"
                 )}
               >
-                {product.name}
+                {flairFor(product.id).nickname}
               </span>
               <button
                 className={cn(
