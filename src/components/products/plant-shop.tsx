@@ -222,7 +222,7 @@ export function PlantShop({ products }: PlantShopProps) {
         <section className="pt-8 pb-2 sm:pt-10">
           <h2 className="comic-headline mx-auto mb-6 max-w-xl text-balance text-center font-bold font-futura text-4xl uppercase leading-[0.95] tracking-tight sm:text-5xl">
             Get these plants{" "}
-            <em className="font-black italic">out of my house!</em>
+            <em className="block font-black italic text-6xl sm:text-8xl">out of my house!</em>
           </h2>
 
           <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
@@ -235,9 +235,6 @@ export function PlantShop({ products }: PlantShopProps) {
         </section>
 
         <section className="py-8 sm:py-10">
-          <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
-            I am over 60% confident in the species names I listed here! Not bad!
-          </p>
           {(() => {
             const parts = ["+61", "413", "567", "350"];
             const number = parts.join("");
