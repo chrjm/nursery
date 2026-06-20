@@ -216,7 +216,7 @@ export function PlantShop({ products }: PlantShopProps) {
 
         <section className="py-8 sm:py-10">
           <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
-            I am over 60% confident in the species names I listed here!
+            I am over 60% confident in the species names I listed here! Not bad!
           </p>
           {(() => {
             const parts = ["+61", "413", "567", "350"];
