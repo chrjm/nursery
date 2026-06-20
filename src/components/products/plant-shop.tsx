@@ -166,7 +166,7 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
           </h2>
           <div className="mx-auto max-w-2xl rounded-lg border-2 border-ink/15 bg-white px-6 py-5 shadow-md sm:px-8 sm:py-6">
             <p className="text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
-              im selling my plants, and all proceeds go to the Marsden Cancer
+              I’m selling my plants, and all proceeds go to the Marsden Cancer
               Hospice, where Katie&apos;s dad is currently being treated.
             </p>
           </div>
