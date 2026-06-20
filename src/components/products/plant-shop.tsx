@@ -214,12 +214,6 @@ export function PlantShop({ products }: PlantShopProps) {
           </div>
         </section>
 
-        <div className="flex justify-center py-6">
-          <span className="inline-block -rotate-2 rounded-full bg-sunshine px-6 py-3 font-black font-futura text-ink text-lg uppercase shadow-md ring-2 ring-ink/10 sm:text-xl">
-            🚚 Free delivery for all plants!
-          </span>
-        </div>
-
         <section className="py-8 sm:py-10">
           <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
             I am over 60% confident in the species names I listed here! Not bad!
@@ -229,14 +223,21 @@ export function PlantShop({ products }: PlantShopProps) {
             const number = parts.join("");
             const href = `https://wa.me/${number.replace("+", "")}`;
             return (
-              <a
-                className="comic-headline mb-8 block text-center font-black font-futura text-2xl uppercase leading-tight text-ink underline decoration-2 underline-offset-4 sm:text-3xl"
-                href={href}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Message me on WhatsApp at {number} to buy a plant!
-              </a>
+              <>
+                <a
+                  className="comic-headline mb-4 block text-center font-black font-futura text-2xl uppercase leading-tight text-ink underline decoration-2 underline-offset-4 sm:text-3xl"
+                  href={href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Message me on WhatsApp at {number} to buy a plant!
+                </a>
+                <div className="mb-8 flex justify-center">
+                  <span className="inline-block -rotate-2 rounded-full bg-sunshine px-6 py-3 font-black font-futura text-ink text-lg uppercase shadow-md ring-2 ring-ink/10 sm:text-xl">
+                    🚚 Free delivery!
+                  </span>
+                </div>
+              </>
             );
           })()}
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
