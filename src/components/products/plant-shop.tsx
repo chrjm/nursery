@@ -214,6 +214,12 @@ export function PlantShop({ products }: PlantShopProps) {
           </div>
         </section>
 
+        <div className="flex justify-center py-6">
+          <span className="inline-block -rotate-2 rounded-full bg-sunshine px-6 py-3 font-black font-futura text-ink text-lg uppercase shadow-md ring-2 ring-ink/10 sm:text-xl">
+            🚚 Free delivery for all plants!
+          </span>
+        </div>
+
         <section className="py-8 sm:py-10">
           <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
             I am over 60% confident in the species names I listed here! Not bad!
