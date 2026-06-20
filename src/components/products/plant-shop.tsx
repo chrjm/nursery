@@ -2,8 +2,10 @@
 
 import { Leaf } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { type CSSProperties, useState } from "react";
 
+import type { SoldStatus } from "@/lib/sold-status";
 import type { PlantProduct } from "@/data/plants";
 import { cn } from "@/lib/utils";
 
@@ -134,15 +136,28 @@ function FlowerMark({ className }: { className?: string }) {
 
 interface PlantCardProps {
   index: number;
+  initialSold: boolean;
   product: PlantProduct;
 }
 
-function PlantCard({ product, index }: PlantCardProps) {
+function PlantCard({ product, index, initialSold }: PlantCardProps) {
   const { nickname, venue } = flairFor(product.id);
   const halo = HALOS[index % HALOS.length];
   const tilt = TILTS[index % TILTS.length];
   const pattern = CHIP_PATTERNS[index % CHIP_PATTERNS.length];
-  const [sold, setSold] = useState(false);
+  const [sold, setSold] = useState(initialSold);
+  const router = useRouter();
+
+  const toggleSold = async () => {
+    const next = !sold;
+    setSold(next);
+    await fetch("/api/sold", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ plantId: product.id, sold: next }),
+    });
+    router.refresh();
+  };
 
   return (
     <li
@@ -165,7 +180,7 @@ function PlantCard({ product, index }: PlantCardProps) {
               "absolute top-3 left-3 rotate-[-3deg] cursor-pointer rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md transition-colors",
               sold ? "bg-sunshine text-ink" : "bg-leaf text-white"
             )}
-            onClick={() => setSold((s) => !s)}
+            onClick={toggleSold}
             type="button"
           >
             {sold ? "SOLD!" : "Not sold yet!"}
@@ -208,9 +223,10 @@ function PlantCard({ product, index }: PlantCardProps) {
 
 interface PlantShopProps {
   products: PlantProduct[];
+  soldStatus: SoldStatus;
 }
 
-export function PlantShop({ products }: PlantShopProps) {
+export function PlantShop({ products, soldStatus }: PlantShopProps) {
   return (
     <div className="min-h-svh">
       <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
@@ -227,14 +243,6 @@ export function PlantShop({ products }: PlantShopProps) {
             Get these plants{" "}
             <em className="block font-black italic text-6xl sm:text-8xl">out of my house!</em>
           </h2>
-
-          <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
-            <p className="text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
-              I'm selling my plants, and all of the money will go to the
-              Marsden Cancer Hospice, where Katie's dad is currently being
-              treated.
-            </p>
-          </div>
         </section>
 
         <section className="py-8 sm:py-10">
@@ -262,7 +270,12 @@ export function PlantShop({ products }: PlantShopProps) {
           })()}
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
             {products.map((product, index) => (
-              <PlantCard index={index} key={product.id} product={product} />
+              <PlantCard
+                index={index}
+                initialSold={soldStatus[product.id] ?? false}
+                key={product.id}
+                product={product}
+              />
             ))}
           </ul>
         </section>

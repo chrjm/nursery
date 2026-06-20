@@ -23,9 +23,8 @@ const mochiy = Mochiy_Pop_One({
 });
 
 export const metadata: Metadata = {
-  title: "Chris's Cool Plants — one-of-a-kind plants for charity",
-  description:
-    "A little sticker sheet of houseplants, grown by hand. Each one is the only one — take it home and the money goes to charity.",
+  title: "Chris's Cool Plants",
+  description: "Chris is selling his plants.",
 };
 
 export default function RootLayout({
