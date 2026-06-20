@@ -190,12 +190,12 @@ function PlantCard({ product, index }: PlantCardProps) {
             </p>
           )}
           <div className="mt-auto flex flex-wrap items-center gap-2">
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-bold text-ink text-xs">
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
               {venue}
             </span>
             {product.heightMeters !== undefined && (
-              <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
+              <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1.5 font-bold text-ink text-xs">
                 {`Big · ${product.heightMeters} m`}
               </span>
             )}
