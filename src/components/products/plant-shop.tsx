@@ -163,12 +163,12 @@ function PlantCard({ product, index }: PlantCardProps) {
           <button
             className={cn(
               "absolute top-3 left-3 rotate-[-3deg] cursor-pointer rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md transition-colors",
-              sold ? "bg-guava text-white" : "bg-sunshine text-ink"
+              sold ? "bg-sunshine text-ink" : "bg-leaf text-white"
             )}
             onClick={() => setSold((s) => !s)}
             type="button"
           >
-            {sold ? "SOLD! 🎉" : "Not sold yet! 😢"}
+            {sold ? "SOLD!" : "Not sold yet!"}
           </button>
         </div>
 
