@@ -191,9 +191,9 @@ export function PlantShop({ products }: PlantShopProps) {
   return (
     <div className="min-h-svh">
       <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
-        <div className="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-center gap-2 px-4 py-3 sm:px-6">
           <FlowerMark className="size-6 rotate-12 text-leaf" />
-          <h1 className="font-pop font-bold text-ink text-lg sm:text-xl">
+          <h1 className="font-pop font-bold uppercase text-ink text-lg sm:text-xl">
             Chris's Cool Plants
           </h1>
         </div>
