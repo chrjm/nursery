@@ -1,4 +1,4 @@
-import { get, list, put } from "@vercel/blob";
+import { list, put } from "@vercel/blob";
 
 export type SoldStatus = Record<string, boolean>;
 
@@ -34,17 +34,17 @@ function snapshotPath(plantId: string): string {
   return `${STATUS_PREFIX}${Date.now()}-${safePlantId}.json`;
 }
 
-async function readSoldStatusBlob(urlOrPathname: string): Promise<SoldStatus> {
-  const result = await get(urlOrPathname, {
-    access: "public",
-    useCache: false,
-  });
+async function readSoldStatusBlob(url: string): Promise<SoldStatus> {
+  const freshUrl = new URL(url);
+  freshUrl.searchParams.set("t", Date.now().toString());
 
-  if (result?.statusCode !== 200) {
+  const response = await fetch(freshUrl, { cache: "no-store" });
+
+  if (!response.ok) {
     return {};
   }
 
-  const value = (await new Response(result.stream).json()) as unknown;
+  const value = (await response.json()) as unknown;
 
   if (!isSoldStatus(value)) {
     throw new Error("Sold status blob has an invalid shape.");
