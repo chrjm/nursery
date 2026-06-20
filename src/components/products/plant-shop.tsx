@@ -221,7 +221,7 @@ export function PlantShop({ products }: PlantShopProps) {
         </section>
 
         <section className="py-8 sm:py-10">
-          <p className="mb-8 text-center text-muted-foreground text-sm">
+          <p className="comic-headline mb-8 text-center font-bold font-futura text-2xl uppercase sm:text-3xl">
             I am over 60% confident in the species names I listed here!
           </p>
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
