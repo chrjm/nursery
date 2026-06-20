@@ -218,6 +218,21 @@ export function PlantShop({ products }: PlantShopProps) {
           <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
             I am over 60% confident in the species names I listed here!
           </p>
+          {(() => {
+            const parts = ["+61", "413", "567", "350"];
+            const number = parts.join("");
+            const href = `https://wa.me/${number.replace("+", "")}`;
+            return (
+              <a
+                className="comic-headline mb-8 block text-center font-black font-futura text-2xl uppercase leading-tight text-ink underline decoration-2 underline-offset-4 sm:text-3xl"
+                href={href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Message me on WhatsApp at {number} to buy a plant!
+              </a>
+            );
+          })()}
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
             {products.map((product, index) => (
               <PlantCard index={index} key={product.id} product={product} />
