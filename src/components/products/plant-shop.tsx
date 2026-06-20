@@ -163,7 +163,7 @@ function PlantCard({ product, index }: PlantCardProps) {
           <h2 className="font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight">
             {nickname}
           </h2>
-          <p className="font-black font-futura text-2xl text-ink">
+          <p className="font-semibold font-futura text-2xl text-ink">
             {formatPrice(product.priceCents)}
           </p>
           <div className="mt-auto flex flex-wrap gap-2">
