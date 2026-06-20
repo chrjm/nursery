@@ -1,6 +1,8 @@
+"use client";
+
 import { Leaf } from "lucide-react";
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { type CSSProperties, useState } from "react";
 
 import type { PlantProduct } from "@/data/plants";
 import { cn } from "@/lib/utils";
@@ -140,6 +142,7 @@ function PlantCard({ product, index }: PlantCardProps) {
   const halo = HALOS[index % HALOS.length];
   const tilt = TILTS[index % TILTS.length];
   const pattern = CHIP_PATTERNS[index % CHIP_PATTERNS.length];
+  const [sold, setSold] = useState(false);
 
   return (
     <li
@@ -171,7 +174,19 @@ function PlantCard({ product, index }: PlantCardProps) {
               {product.note}
             </p>
           )}
-          <div className="mt-auto flex flex-wrap gap-2">
+          <div className="mt-auto flex flex-wrap items-center gap-2">
+            <button
+              className={cn(
+                "inline-flex w-fit cursor-pointer items-center rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase transition-colors",
+                sold
+                  ? "bg-guava text-white"
+                  : "bg-secondary text-ink"
+              )}
+              onClick={() => setSold((s) => !s)}
+              type="button"
+            >
+              {sold ? "SOLD! 🎉" : "Not sold yet! 😢"}
+            </button>
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
               {venue}
