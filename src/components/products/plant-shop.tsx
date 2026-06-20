@@ -214,14 +214,15 @@ export function PlantShop({ products }: PlantShopProps) {
 
           <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
             <p className="text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
-              Chris is selling his plants, and all proceeds go to the Marsden
-              Cancer Hospice, where Katie's dad is currently being treated.
+              I'm selling my plants, and all of the money will go to the
+              Marsden Cancer Hospice, where Katie's dad is currently being
+              treated.
             </p>
           </div>
         </section>
 
         <section className="py-8 sm:py-10">
-          <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase sm:text-3xl">
+          <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase leading-tight sm:text-3xl">
             I am over 60% confident in the species names I listed here!
           </p>
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
