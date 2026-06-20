@@ -147,7 +147,7 @@ function PlantCard({ product, index }: PlantCardProps) {
       style={{ "--tilt": tilt, "--halo": halo } as CSSProperties}
     >
       <article className="flex h-full flex-col overflow-hidden rounded-[28px] border-2 border-ink/15 border-dashed bg-card">
-        <div className={cn("chip-bg relative aspect-square", pattern)}>
+        <div className={cn("chip-bg relative aspect-[3/4]", pattern)}>
           <Image
             alt={product.image.alt}
             className="object-contain"
