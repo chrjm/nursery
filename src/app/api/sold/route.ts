@@ -1,5 +1,8 @@
 import { getSoldStatus, setSold } from "@/lib/sold-status";
+import { revalidatePath } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const status = await getSoldStatus();
@@ -12,5 +15,6 @@ export async function POST(req: NextRequest) {
     sold: boolean;
   };
   await setSold(plantId, sold);
+  revalidatePath("/");
   return NextResponse.json({ ok: true });
 }
