@@ -14,6 +14,7 @@ import youngSnakePlantWhiteCylinderPot from "@/data/plants/young-snake-plant-whi
 
 export interface PlantProduct {
   description: string;
+  heightMeters?: number;
   id: string;
   image: {
     alt: string;

@@ -3,7 +3,7 @@
   "name": "Sculpted Topiary Tree",
   "plantType": "Topiary tree",
   "scientificName": "Assorted topiary",
-  "priceCents": 8600,
+  "priceCents": 82000,
   "description": "A pruned tree-form plant with tiered foliage pads and a clean silhouette for patios or bright interiors.",
   "image": {
     "src": "/plants/transparent/sculpted-topiary-tree-black-nursery-pot.webp",
@@ -13,5 +13,6 @@
   "water": "Water when the top inch of soil is dry",
   "size": "Tall patio plant",
   "pot": "Black nursery pot",
+  "heightMeters": 1.6,
   "inventory": 1
 }

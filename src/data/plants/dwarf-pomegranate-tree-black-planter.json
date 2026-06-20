@@ -3,7 +3,7 @@
   "name": "Dwarf Pomegranate Tree",
   "plantType": "Fruiting ornamental tree",
   "scientificName": "Punica granatum",
-  "priceCents": 9800,
+  "priceCents": 120000,
   "description": "A slender fruiting tree with small leaves, red fruit, and height for a bright indoor corner or covered patio.",
   "image": {
     "src": "/plants/transparent/dwarf-pomegranate-tree-black-planter.webp",
@@ -13,5 +13,6 @@
   "water": "Water when the top inch of soil is dry",
   "size": "Tall floor plant",
   "pot": "Black planter",
+  "heightMeters": 2.33,
   "inventory": 1
 }

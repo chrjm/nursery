@@ -55,11 +55,11 @@ const PLANT_FLAIR: Record<string, Flair> = {
     venue: "Indoor & outdoor",
   },
   "fiddle-leaf-fig-window-white-pot": {
-    nickname: "Fred the Fiddle Leaf",
+    nickname: "Fred the Fiddle Leaf Fig",
     venue: "Indoors",
   },
   "dwarf-pomegranate-tree-black-planter": {
-    nickname: "Pippa the Pomegranate",
+    nickname: "Cleo the Calamondin",
     venue: "Indoor & outdoor",
   },
   "sculpted-topiary-tree-black-nursery-pot": {
@@ -100,8 +100,8 @@ const TILTS = [
   "1.4deg",
 ] as const;
 
-const currencyFormatter = new Intl.NumberFormat("en-US", {
-  currency: "USD",
+const currencyFormatter = new Intl.NumberFormat("es-MX", {
+  currency: "MXN",
   maximumFractionDigits: 0,
   style: "currency",
 });
@@ -150,11 +150,11 @@ function PlantCard({ product, index }: PlantCardProps) {
         <div className={cn("chip-bg relative aspect-square", pattern)}>
           <Image
             alt={product.image.alt}
-            className="object-contain p-3"
+            className="object-contain"
             fill
             loading={index === 0 ? "eager" : "lazy"}
             priority={index === 0}
-            sizes="(min-width: 1024px) 352px, (min-width: 640px) 45vw, 92vw"
+            sizes="(min-width: 640px) 45vw, 92vw"
             src={product.image.src}
           />
         </div>
@@ -163,14 +163,17 @@ function PlantCard({ product, index }: PlantCardProps) {
           <h2 className="font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight">
             {nickname}
           </h2>
-          <p className="text-muted-foreground text-sm leading-6">
-            {product.description}
-          </p>
-
-          <span className="mt-auto inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-medium text-ink text-xs">
-            <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
-            {venue}
-          </span>
+          <div className="mt-auto flex flex-wrap gap-2">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
+              <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
+              {venue}
+            </span>
+            <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
+              {product.heightMeters === undefined
+                ? "Small"
+                : `Big · ${product.heightMeters} m`}
+            </span>
+          </div>
         </div>
       </article>
 
@@ -205,7 +208,8 @@ export function PlantShop({ products }: PlantShopProps) {
       <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <section className="pt-8 pb-2 sm:pt-10">
           <h2 className="comic-headline mx-auto mb-6 max-w-xl text-balance text-center font-bold font-futura text-4xl uppercase leading-[0.95] tracking-tight sm:text-5xl">
-            Get these plants out of my house!
+            Get these plants{" "}
+            <em className="font-black italic">out of my house!</em>
           </h2>
 
           <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
@@ -217,7 +221,7 @@ export function PlantShop({ products }: PlantShopProps) {
         </section>
 
         <section className="py-8 sm:py-10">
-          <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
             {products.map((product, index) => (
               <PlantCard index={index} key={product.id} product={product} />
             ))}

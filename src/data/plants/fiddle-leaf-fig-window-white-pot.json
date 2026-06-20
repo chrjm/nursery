@@ -3,7 +3,7 @@
   "name": "Fiddle Leaf Fig",
   "plantType": "Ficus",
   "scientificName": "Ficus lyrata",
-  "priceCents": 11800,
+  "priceCents": 170000,
   "description": "A tall statement fig with glossy violin-shaped leaves, ideal for a bright window or sunny living room.",
   "image": {
     "src": "/plants/transparent/fiddle-leaf-fig-window-white-pot.webp",
@@ -12,6 +12,7 @@
   "light": "Bright indirect light",
   "water": "Water when the top few inches are dry",
   "size": "Tall floor plant",
+  "heightMeters": 2.54,
   "pot": "White ceramic pot",
   "inventory": 1
 }
