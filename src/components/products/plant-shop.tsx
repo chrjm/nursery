@@ -175,22 +175,22 @@ function PlantCard({ product, index, initialSold }: PlantCardProps) {
             sizes="(min-width: 640px) 45vw, 92vw"
             src={product.image.src}
           />
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="absolute top-1 left-2 z-10 object-contain drop-shadow-md"
+            height={56}
+            src={sold ? "/happychris.webp" : "/sadchris.webp"}
+            width={56}
+          />
           <button
             className={cn(
-              "absolute top-3 left-3 rotate-[-3deg] cursor-pointer flex flex-col items-center gap-1 rounded-2xl px-3 py-2 font-black font-futura text-xs uppercase shadow-md transition-colors",
+              "absolute top-10 left-3 z-0 rotate-[-3deg] cursor-pointer rounded-full px-3 py-1.5 font-black font-futura text-xs uppercase shadow-md transition-colors",
               sold ? "bg-sunshine text-ink" : "bg-leaf text-white"
             )}
             onClick={toggleSold}
             type="button"
           >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="object-contain"
-              height={48}
-              src={sold ? "/happychris.webp" : "/sadchris.webp"}
-              width={48}
-            />
             {sold ? "SOLD!" : "Not sold yet!"}
           </button>
         </div>
