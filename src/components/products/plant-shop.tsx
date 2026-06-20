@@ -199,7 +199,7 @@ export function PlantShop({ products }: PlantShopProps) {
       <header className="sticky top-0 z-40 border-ink/10 border-b bg-paper/95">
         <div className="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
           <FlowerMark className="size-6 rotate-12 text-leaf" />
-          <h1 className="font-pop text-ink text-lg sm:text-xl">
+          <h1 className="font-pop font-semibold text-ink text-lg sm:text-xl">
             Chris's Cool Plants
           </h1>
         </div>
@@ -213,7 +213,7 @@ export function PlantShop({ products }: PlantShopProps) {
           </h2>
 
           <div className="cloud-card mx-auto max-w-2xl px-9 py-8 sm:px-12 sm:py-9">
-            <p className="text-balance text-center text-ink text-lg leading-7 sm:text-xl">
+            <p className="text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
               Chris is selling his plants, and all proceeds go to the Marsden
               Cancer Hospice, where Katie's dad is currently being treated.
             </p>
@@ -221,7 +221,7 @@ export function PlantShop({ products }: PlantShopProps) {
         </section>
 
         <section className="py-8 sm:py-10">
-          <p className="comic-headline mb-8 text-center font-bold font-futura text-2xl uppercase sm:text-3xl">
+          <p className="comic-headline mb-8 text-center font-black font-futura text-2xl uppercase sm:text-3xl">
             I am over 60% confident in the species names I listed here!
           </p>
           <ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
@@ -234,7 +234,7 @@ export function PlantShop({ products }: PlantShopProps) {
 
       <footer className="mx-auto mt-6 w-full max-w-6xl px-4 pb-12 sm:px-6">
         <div className="flex flex-col items-center gap-2 border-ink/10 border-t pt-8 text-center">
-          <p className="flex items-center gap-2 font-pop text-ink text-lg">
+          <p className="flex items-center gap-2 font-pop font-semibold text-ink text-lg">
             <Leaf aria-hidden="true" className="size-5 text-leaf" />
             Chris's Cool Plants
           </p>
