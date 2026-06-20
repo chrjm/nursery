@@ -167,8 +167,8 @@ function PlantCard({ product, index }: PlantCardProps) {
             {formatPrice(product.priceCents)}
           </p>
           {product.note && (
-            <p className="text-sm font-semibold text-muted-foreground italic">
-              "{product.note}"
+            <p className="text-sm font-semibold text-muted-foreground">
+              {product.note}
             </p>
           )}
           <div className="mt-auto flex flex-wrap gap-2">
