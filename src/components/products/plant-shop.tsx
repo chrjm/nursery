@@ -163,6 +163,9 @@ function PlantCard({ product, index }: PlantCardProps) {
           <h2 className="font-bold font-futura text-2xl text-ink uppercase leading-tight tracking-tight">
             {nickname}
           </h2>
+          <p className="font-black font-futura text-2xl text-ink">
+            {formatPrice(product.priceCents)}
+          </p>
           <div className="mt-auto flex flex-wrap gap-2">
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
@@ -176,15 +179,6 @@ function PlantCard({ product, index }: PlantCardProps) {
           </div>
         </div>
       </article>
-
-      <span
-        aria-hidden="true"
-        className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 -rotate-3 rounded-[3px] bg-card/55 shadow-sm ring-1 ring-ink/10"
-      />
-      <span className="absolute -top-3 -right-2 rotate-6 rounded-full bg-sunshine px-3.5 py-1.5 font-bold font-futura text-ink text-sm shadow-md ring-2 ring-card">
-        <span className="sr-only">Price: </span>
-        {formatPrice(product.priceCents)}
-      </span>
     </li>
   );
 }
