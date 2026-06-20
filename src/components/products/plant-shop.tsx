@@ -164,6 +164,10 @@ export function PlantShop({ products, soldStatus }: PlantShopProps) {
             Get these plants{" "}
             <em className="block font-black italic text-6xl sm:text-8xl">out of my house!</em>
           </h2>
+          <p className="mx-auto max-w-2xl text-balance text-center font-semibold text-ink text-lg leading-7 sm:text-xl">
+            Chris is selling his plants, and all proceeds go to the Marsden
+            Cancer Hospice, where Katie&apos;s dad is currently being treated.
+          </p>
         </section>
 
         <section className="py-8 sm:py-10">
