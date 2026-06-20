@@ -171,11 +171,11 @@ function PlantCard({ product, index }: PlantCardProps) {
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
               {venue}
             </span>
-            <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
-              {product.heightMeters === undefined
-                ? "Small"
-                : `Big · ${product.heightMeters} m`}
-            </span>
+            {product.heightMeters !== undefined && (
+              <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
+                {`Big · ${product.heightMeters} m`}
+              </span>
+            )}
           </div>
         </div>
       </article>
