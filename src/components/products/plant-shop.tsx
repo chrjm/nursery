@@ -166,6 +166,11 @@ function PlantCard({ product, index }: PlantCardProps) {
           <p className="font-semibold font-futura text-2xl text-ink">
             {formatPrice(product.priceCents)}
           </p>
+          {product.note && (
+            <p className="text-sm font-semibold text-muted-foreground italic">
+              "{product.note}"
+            </p>
+          )}
           <div className="mt-auto flex flex-wrap gap-2">
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 font-semibold text-ink text-xs">
               <span aria-hidden="true">{VENUE_EMOJI[venue]}</span>
